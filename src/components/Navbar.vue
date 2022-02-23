@@ -13,6 +13,7 @@
 <script>
 export default {
   data() {
+    name: 'Navbar'
     return {
       isActive: false,
     };
