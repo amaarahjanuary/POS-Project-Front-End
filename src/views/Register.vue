@@ -1,30 +1,10 @@
 <template>
   <form @submit.prevent="register" class="form neu-border">
     <h2 class="form-heading">Register</h2>
-    <input
-      class="form-input neu-border-inset"
-      type="text"
-      v-model="name"
-      placeholder="Name"
-    />
-    <input
-      class="form-input neu-border-inset"
-      type="email"
-      v-model="email"
-      placeholder="Email"
-    />
-    <input
-      class="form-input neu-border-inset"
-      type="text"
-      v-model="contact"
-      placeholder="Contact Number"
-    />
-    <input
-      class="form-input neu-border-inset"
-      type="password"
-      v-model="password"
-      placeholder="Password"
-    />
+    <input class="form-input neu-border-inset" type="text" v-model="name" placeholder="Name"/>
+    <input class="form-input neu-border-inset" type="email" v-model="email" placeholder="Email"/>
+    <input class="form-input neu-border-inset" type="text" v-model="contact" placeholder="Contact Number"/>
+    <input class="form-input neu-border-inset" type="password" v-model="password" placeholder="Password"/>
     <button type="submit" class="form-btn neu-border">Sign up</button>
     <div class="form-social-login">
       <button class="form-btn neu-border form-social-btn">
@@ -54,7 +34,7 @@ export default {
   methods: {
     register() {
       console.log(this.name, this.email, this.contact, this.password);
-                      fetch("http://localhost:2000/users", {
+                      fetch("", {
                     method: "POST", 
                     body: JSON.stringify({
                         name: this.name, 
