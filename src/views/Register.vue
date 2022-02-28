@@ -1,22 +1,46 @@
 <template>
   <form @submit.prevent="register" class="form neu-border">
     <h2 class="form-heading">Register</h2>
-    <input class="form-input neu-border-inset" type="text" v-model="name" placeholder="Name"/>
-    <input class="form-input neu-border-inset" type="email" v-model="email" placeholder="Email"/>
-    <input class="form-input neu-border-inset" type="text" v-model="contact" placeholder="Contact Number"/>
-    <input class="form-input neu-border-inset" type="password" v-model="password" placeholder="Password"/>
+    <input
+      class="form-input neu-border-inset"
+      type="text"
+      v-model="name"
+      placeholder="Name"
+      required
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="email"
+      v-model="email"
+      placeholder="Email"
+      required
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="text"
+      v-model="contact"
+      placeholder="Contact Number"
+      required
+    />
+    <input
+      class="form-input neu-border-inset"
+      type="password"
+      v-model="password"
+      placeholder="Password"
+      required
+    />
     <button type="submit" class="form-btn neu-border">Sign up</button>
-    <div class="form-social-login">
+    <!-- <div class="form-social-login">
       <button class="form-btn neu-border form-social-btn">
         <i class="fab fa-google"></i>
       </button>
       <button class="form-btn neu-border form-social-btn">
         <i class="fab fa-facebook-f"></i>
       </button>
-    </div>
+    </div> -->
 
     <p>
-      Already a member?
+      Already have an account?
       <router-link :to="{ name: 'Login' }">Sign in</router-link>
     </p>
   </form>
@@ -33,35 +57,41 @@ export default {
   },
   methods: {
     register() {
-      console.log(this.name, this.email, this.contact, this.password);
-                      fetch("", {
-                    method: "POST", 
-                    body: JSON.stringify({
-                        name: this.name, 
-                        email: this.email, 
-                        contact: this.contact,
-                        password: this.password
-                    }), 
-                    headers: {
-                        "Content-Type": "application/json; charset=UTF-8"
-                    },
-                })
-                .then((response) => response.json())
-                .then((json) => alert(json))
-                .catch((e) => alert(e.msg))
-                }
-            }
-        }
-
+      fetch("https://generic-blog-api.herokuapp.com/users", {
+        method: "POST",
+        body: JSON.stringify({
+          name: this.name,
+          email: this.email,
+          contact: this.contact,
+          password: this.password,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          alert("User registered");
+          localStorage.setItem("jwt", json.jwt);
+          this.$router.push({ name: "Products" });
+        })
+        .catch((err) => {
+          alert(err);
+        });
+    },
+  },
+};
 </script>
 <style>
 .neu-border {
   border-radius: 30px;
-  background: #f5f5f5;
+  background: #f4f4f4;
   box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff;
 }
+
+/* rgb(74, 159, 228) */
 .neu-border-inset {
-  border-radius: 30px;
+  border-radius: 60px;
   background: #f5f5f5;
   box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff;
 }

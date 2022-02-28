@@ -1,68 +1,83 @@
 <template>
-  <div v-if="product">
-    <div class="product">
-      <img
-        class="product-image neu-border"
-        :src="product.post_img"
-        :alt="product.post_title"
-      />
-      <div class="product-details">
-        <h2>{{ product.post_title }}</h2>
-        <h4>{{ product.post_date }}</h4>
-        <p>{{ product.post_body }}</p>
+  <div v-if="blog">
+    <div class="blog">
+      <img class="blog-image neu-border" :src="blog.img" :alt="blog.title" />
+      <div class="blog-details">
+        <h2>{{ blog.title }}</h2>
+        <h4>{{ blog.author_name }} - {{ blog.date }}</h4>
+        <p>{{ blog.body }}</p>
       </div>
     </div>
   </div>
-  <div v-else>Loading the product...</div>
+  <div v-else>Loading the blog...</div>
 </template>
 <script>
-// import productCard from "@/components/products/productCard.vue";
-
 export default {
-  // components: { productCard },
   props: ["id"],
   data() {
     return {
-      product: null,
+      blog: null,
     };
   },
   mounted() {
-    // Fetch goes here
+    fetch("https://generic-blog-api.herokuapp.com/posts/" + this.id, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then(async (json) => {
+        this.blog = json;
+        await fetch(
+          "https://generic-blog-api.herokuapp.com/users/" + json.author,
+          {
+            method: "GET",
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+            },
+          }
+        )
+          .then((response) => response.json())
+          .then((json) => {
+            this.blog.author_name = json.name;
+          });
+      });
   },
 };
 </script>
 <style>
 .product {
   display: flex;
+  flex-direction: column;
   padding: 0 10%;
-  /* max-width: 600px; */
   margin-inline: auto;
   align-items: stretch;
   gap: 30px;
 }
 .product-image {
   padding: 10px;
-  width: 50%;
-  max-height: 80vh;
-  object-fit: contain;
+  width: 100%;
+  min-width: 100%;
+  max-height: 50vh;
+  object-fit: cover;
 }
 .product-details {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
   justify-content: center;
-  text-align: end;
+  text-align: left;
   gap: 8px;
 }
 
 .products-container {
   display: flex;
   flex-wrap: wrap;
-  /* max-width: 600px; */
   width: 100%;
   margin-inline: auto;
   padding: 30px;
-  /* overflow: auto; */
   gap: 2%;
   justify-content: stretch;
   align-items: stretch;
@@ -78,15 +93,15 @@ export default {
   box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff;
 }
 @media screen and (max-width: 500px) {
-  .product {
+  .blog {
     flex-direction: column;
   }
-  .product-image,
-  .product-details {
+  .blog-image,
+  .blog-details {
     width: 100%;
   }
 
-  .product-details {
+  .blog-details {
     align-items: flex-start;
     text-align: left;
   }

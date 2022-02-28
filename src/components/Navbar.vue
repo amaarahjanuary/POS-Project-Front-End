@@ -1,10 +1,19 @@
 <template>
   <nav id="nav" :class="{ active: isActive }">
     <router-link @click="toggleNav" to="/">Home</router-link>
-    <router-link @click="toggleNav" to="/about">About</router-link>
-    <router-link @click="toggleNav" to="/login">Login</router-link>
-    <router-link @click="toggleNav" to="/register">Register</router-link>
-    <router-link @click="toggleNav" to="/products">Products</router-link>
+    <!-- <router-link @click="toggleNav" to="/about">About</router-link> -->
+
+    <router-link @click="toggleNav" :to="{ name: 'Products' }">Products</router-link>
+    <router-link @click="toggleNav" :to="{ name: 'CreateProduct' }"
+      >Create Product</router-link
+    >
+    <router-link @click="logout" class="logout" :to="{ name: 'Home' }"
+      >Log out</router-link
+    >
+    <router-link @click="toggleNav" :to="{ name: 'Login' }">Login</router-link>
+    <router-link @click="toggleNav" :to="{ name: 'Register' }"
+      >Register</router-link
+    >
   </nav>
   <button id="nav-btn" @click="toggleNav">
     <i className="fas fa-bars"></i>
@@ -13,7 +22,6 @@
 <script>
 export default {
   data() {
-    name: 'Navbar'
     return {
       isActive: false,
     };
@@ -21,6 +29,10 @@ export default {
   methods: {
     toggleNav() {
       this.isActive = !this.isActive;
+    },
+    logout() {
+      localStorage.clear();
+      this.toggleNav;
     },
   },
 };
@@ -56,10 +68,9 @@ export default {
 	 padding: 20px;
 	 text-decoration: none;
 }
- #nav a.router-link-exact-active {
-	 color: #42b983;
+ #nav a.router-link-exact-active:not(.logout) {
+	 color: blue;
 }
- 
 
 @media screen and (max-width: 500px) {
   #nav {

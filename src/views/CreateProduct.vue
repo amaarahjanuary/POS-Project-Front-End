@@ -1,58 +1,61 @@
 <template>
-  <form @submit.prevent="login" class="form neu-border">
-    <h2 class="form-heading">Login</h2>
+  <form @submit.prevent="createBlog" class="form neu-border">
+    <h2 class="form-heading">Create a product</h2>
     <input
       class="form-input neu-border-inset"
-      type="email"
-      v-model="email"
-      placeholder="Email"
+      type="text"
+      v-model="title"
+      placeholder="Title"
+      required
     />
     <input
       class="form-input neu-border-inset"
-      type="password"
-      v-model="password"
-      placeholder="Password"
+      type="text"
+      v-model="img"
+      placeholder="Blog Image"
+      required
     />
-    <button type="submit" class="form-btn neu-border">Sign in</button>
-    <!-- <div class="form-social-login">
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-google"></i>
-      </button>
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-facebook-f"></i>
-      </button>
-    </div> -->
+    <textarea
+      class="form-input neu-border-inset"
+      type="text"
+      v-model="body"
+      placeholder="Body"
+      required
+    ></textarea>
 
-    <p>
-      Not a member?
-      <router-link :to="{ name: 'Register' }">Create an account</router-link>
-    </p>
+    <button type="submit" class="form-btn neu-border">Create Blog</button>
   </form>
 </template>
 <script>
 export default {
   data() {
     return {
-      email: "",
-      password: "",
+      title: "",
+      body: "",
+      img: "",
     };
   },
   methods: {
-    login() {
-      fetch("https://generic-blog-api.herokuapp.com/users", {
-        method: "PATCH",
+    createBlog() {
+      if (!localStorage.getItem("jwt")) {
+        alert("User not logged in");
+        return this.$router.push({ name: "Login" });
+      }
+      fetch("https://generic-blog-api.herokuapp.com/posts", {
+        method: "POST",
         body: JSON.stringify({
-          email: this.email,
-          password: this.password,
+          title: this.title,
+          body: this.body,
+          img: this.img,
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8",
+          Authorization: `Bearer ${localStorage.getItem("jwt")}`,
         },
       })
         .then((response) => response.json())
         .then((json) => {
-          localStorage.setItem("jwt", json.jwt);
-          alert("User logged in");
+          alert("Post Created");
           this.$router.push({ name: "Products" });
         })
         .catch((err) => {
@@ -81,8 +84,8 @@ export default {
   padding: 40px;
   gap: 20px;
   width: 100%;
-  margin-inline: auto;
   max-width: 600px;
+  margin-inline: auto;
 }
 
 .form-heading {
