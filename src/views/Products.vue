@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     if (localStorage.getItem("jwt")) {
-      fetch("https://generic-blog-api.herokuapp.com/posts", {
+      fetch("https://pos-backend-proj.herokuapp.com/products", {
         method: "GET",
         headers: {
           "Content-type": "application/json; charset=UTF-8",
@@ -82,7 +82,7 @@ export default {
           this.products = json;
           this.products.forEach(async (product) => {
             await fetch(
-              "https://generic-blog-api.herokuapp.com/users/" + product.title,
+              "https://pos-backend-proj.herokuapp.com/users" + product.title,
               {
                 method: "GET",
                 headers: {

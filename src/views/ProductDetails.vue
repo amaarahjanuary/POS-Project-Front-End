@@ -1,15 +1,21 @@
 <template>
   <div v-if="product">
-    <div class="product">
-      <img class="product-image neu-border" :src="product.img" :alt="product.title" />
-      <div class="product-details">
-        <h2>{{ product.title }}</h2>
-        <h4>{{ product.category }} - {{ product.price }}</h4>
-        <p>{{ product.img }}</p>
-      </div>
-    </div>
+
   </div>
+  
   <div v-else>Loading the product...</div>
+        <div class="card">
+        <img src="${product.img}" class="card-img-top" alt="${product.title}">
+        <div class="card-body">
+          <h5 class="card-title">${product.title}</h5>
+          <h5 class="card-category">${product.category}</h5>
+          <p class="card-text">R${product.price}</p>
+          <div class="d-flex mb-3">
+            <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
+            <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})"><i class="bi bi-bag-plus"></i></button>
+          </div>
+        </div>
+        </div>
 </template>
 <script>
 export default {
@@ -20,7 +26,7 @@ export default {
     };
   },
   mounted() {
-    fetch("https://generic-blog-api.herokuapp.com/posts/" + this.id, {
+    fetch("https://pos-backend-proj.herokuapp.com/products" + this.id, {
       method: "GET",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
@@ -31,7 +37,7 @@ export default {
       .then(async (json) => {
         this.product = json;
         await fetch(
-          "https://generic-blog-api.herokuapp.com/users/" + json.title,
+          "https://pos-backend-proj.herokuapp.com/users" + json.title,
           {
             method: "GET",
             headers: {
@@ -106,4 +112,24 @@ export default {
     text-align: left;
   }
 }
+
+#products {
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+img {
+  height: 200px !important;
+  object-fit: cover;
+}
+
+.card {
+  width: calc((100% / 4) - 15px);
+  min-width: 300px;
+}
+
+.card-title {
+  text-transform: capitalize;
+}
+
 </style>
