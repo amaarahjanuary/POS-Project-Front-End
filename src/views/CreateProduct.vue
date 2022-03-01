@@ -55,7 +55,7 @@ export default {
 .neu-border {
   border-radius: 30px;
   background: #f5f5f5;
-  box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff;
+  /* box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff; */
 }
 .neu-border-inset {
   border-radius: 30px;
@@ -72,6 +72,7 @@ export default {
   width: 100%;
   max-width: 600px;
   margin-inline: auto;
+  background-color: rgb(0, 195, 255);
 }
 
 .form-heading {
