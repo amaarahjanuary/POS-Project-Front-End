@@ -1,29 +1,13 @@
 <template>
-  <form @submit.prevent="createBlog" class="form neu-border">
+  <form @submit.prevent="createProduct" class="form neu-border">
     <h2 class="form-heading">Create a product</h2>
-    <input
-      class="form-input neu-border-inset"
-      type="text"
-      v-model="title"
-      placeholder="Title"
-      required
-    />
-    <input
-      class="form-input neu-border-inset"
-      type="text"
-      v-model="img"
-      placeholder="Blog Image"
-      required
-    />
-    <textarea
-      class="form-input neu-border-inset"
-      type="text"
-      v-model="body"
-      placeholder="Body"
-      required
-    ></textarea>
+    <input class="form-input neu-border-inset" type="text" v-model="title" placeholder="Title" required/>
+    <input class="form-input neu-border-inset" type="text" v-model="category" placeholder="Category" required/>
+    <input class="form-input neu-border-inset" type="text" v-model="price" placeholder="Price" required/>
+    <input class="form-input neu-border-inset" type="text" v-model="img" placeholder="Product Image" required/>
 
-    <button type="submit" class="form-btn neu-border">Create Blog</button>
+
+    <button type="submit" class="form-btn neu-border">Create Product</button>
   </form>
 </template>
 <script>
@@ -31,12 +15,13 @@ export default {
   data() {
     return {
       title: "",
-      body: "",
+      category: "",
+      price: "",
       img: "",
     };
   },
   methods: {
-    createBlog() {
+    createProduct() {
       if (!localStorage.getItem("jwt")) {
         alert("User not logged in");
         return this.$router.push({ name: "Login" });
@@ -45,7 +30,8 @@ export default {
         method: "POST",
         body: JSON.stringify({
           title: this.title,
-          body: this.body,
+          category: this.category,
+          price: this.price,
           img: this.img,
         }),
         headers: {
@@ -55,8 +41,8 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          alert("Post Created");
-          this.$router.push({ name: "Products" });
+          alert("Product Created");
+          this.$router.push({ title: "Products" });
         })
         .catch((err) => {
           alert(err);

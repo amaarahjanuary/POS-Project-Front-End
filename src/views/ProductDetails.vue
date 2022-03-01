@@ -1,22 +1,22 @@
 <template>
-  <div v-if="blog">
-    <div class="blog">
-      <img class="blog-image neu-border" :src="blog.img" :alt="blog.title" />
-      <div class="blog-details">
-        <h2>{{ blog.title }}</h2>
-        <h4>{{ blog.author_name }} - {{ blog.date }}</h4>
-        <p>{{ blog.body }}</p>
+  <div v-if="product">
+    <div class="product">
+      <img class="product-image neu-border" :src="product.img" :alt="product.title" />
+      <div class="product-details">
+        <h2>{{ product.title }}</h2>
+        <h4>{{ product.category }} - {{ product.price }}</h4>
+        <p>{{ product.img }}</p>
       </div>
     </div>
   </div>
-  <div v-else>Loading the blog...</div>
+  <div v-else>Loading the product...</div>
 </template>
 <script>
 export default {
   props: ["id"],
   data() {
     return {
-      blog: null,
+      product: null,
     };
   },
   mounted() {
@@ -29,9 +29,9 @@ export default {
     })
       .then((response) => response.json())
       .then(async (json) => {
-        this.blog = json;
+        this.product = json;
         await fetch(
-          "https://generic-blog-api.herokuapp.com/users/" + json.author,
+          "https://generic-blog-api.herokuapp.com/users/" + json.title,
           {
             method: "GET",
             headers: {
@@ -42,7 +42,7 @@ export default {
         )
           .then((response) => response.json())
           .then((json) => {
-            this.blog.author_name = json.name;
+            this.product.title = json.name;
           });
       });
   },
@@ -93,15 +93,15 @@ export default {
   box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff;
 }
 @media screen and (max-width: 500px) {
-  .blog {
+  .product {
     flex-direction: column;
   }
-  .blog-image,
-  .blog-details {
+  .product-image,
+  .product-details {
     width: 100%;
   }
 
-  .blog-details {
+  .product-details {
     align-items: flex-start;
     text-align: left;
   }

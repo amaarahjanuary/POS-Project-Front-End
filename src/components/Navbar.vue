@@ -1,19 +1,13 @@
 <template>
   <nav id="nav" :class="{ active: isActive }">
     <router-link @click="toggleNav" to="/">Home</router-link>
-    <!-- <router-link @click="toggleNav" to="/about">About</router-link> -->
-
-    <router-link @click="toggleNav" :to="{ name: 'Products' }">Products</router-link>
-    <router-link @click="toggleNav" :to="{ name: 'CreateProduct' }"
-      >Create Product</router-link
-    >
-    <router-link @click="logout" class="logout" :to="{ name: 'Home' }"
-      >Log out</router-link
-    >
     <router-link @click="toggleNav" :to="{ name: 'Login' }">Login</router-link>
-    <router-link @click="toggleNav" :to="{ name: 'Register' }"
-      >Register</router-link
-    >
+    <router-link @click="toggleNav" :to="{ name: 'Register' }">Register</router-link>
+    <router-link @click="toggleNav" :to="{ name: 'Products' }">Products</router-link>
+    <router-link @click="toggleNav" :to="{ name: 'CreateProduct' }">Create Product</router-link>
+    <router-link @click="toggleNav" :to="{ name: 'Cart' }">Cart</router-link>
+    <!-- <router-link @click="toggleNav" to="/cart">Cart</router-link> -->
+    <router-link @click="logout" class="logout" :to="{ name: 'Home' }">Log out</router-link>
   </nav>
   <button id="nav-btn" @click="toggleNav">
     <i className="fas fa-bars"></i>

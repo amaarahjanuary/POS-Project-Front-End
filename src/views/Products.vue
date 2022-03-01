@@ -1,4 +1,39 @@
 <template>
+    <div class="container d-flex justify-content-end mb-3 mt-5 pt-4">
+      <div class="d-flex w-25 ms-3">
+        <label for="" class="form-label">Sort by category</label>
+        <select
+          class="form-select"
+          name=""
+          id="sortCategory"
+          onchange="sortCategory()"
+        >
+          <option value="All">All</option>
+          <option value="Footwear">Footwear</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Accessories">Accessories</option>
+        </select>
+      </div>
+      <div class="d-flex w-25 ms-3">
+        <label for="" class="form-label">Sort name</label>
+        <select class="form-select" name="" id="sortName" onchange="sortName()">
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
+      <div class="d-flex w-25 ms-3">
+        <label for="" class="form-label">Sort price</label>
+        <select
+          class="form-select"
+          name=""
+          id="sortPrice"
+          onchange="sortPrice()"
+        >
+          <option value="ascending">Ascending</option>
+          <option value="descending">Descending</option>
+        </select>
+      </div>
+    </div>
   <div v-if="products">
     <h2>Products</h2>
     <div class="products-container" v-if="products">
@@ -8,7 +43,7 @@
         :to="{ name: 'ProductDetails', params: { id: product._id } }"
       >
         <img :src="product.img" :alt="product.title" />
-        {{ product.author_name }}
+        {{ product.category }}
       </router-link>
     </div>
   </div>
@@ -35,7 +70,7 @@ export default {
           this.products = json;
           this.products.forEach(async (product) => {
             await fetch(
-              "https://generic-blog-api.herokuapp.com/users/" + blog.author,
+              "https://generic-blog-api.herokuapp.com/users/" + product.title,
               {
                 method: "GET",
                 headers: {
@@ -46,7 +81,7 @@ export default {
             )
               .then((response) => response.json())
               .then((json) => {
-                blog.author_name = json.name;
+                product.title = json.name;
               });
           });
         })
