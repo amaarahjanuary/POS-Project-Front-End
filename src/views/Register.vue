@@ -8,9 +8,6 @@
                   <h4 class="card-title mt-3 text-center">Create Account</h4>
                   <p class="text-center">Create your free account now</p>
 
-                  <p class="text-muted font-weight-bold ">
-                    <span>OR</span>
-                  </p>
                   <form>
                     <div class="form-group input-group">
                       <div class="input-group-prepend">

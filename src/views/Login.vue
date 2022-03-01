@@ -6,7 +6,7 @@
               <div class="card shadow">
                 <div class="card-body mx-auto">
                   <h4 class="card-title mt-3 text-center">Login</h4>
-                  
+                  <p class="text-center">Login to your account now</p>
                   <form>
                     <div class="form-group input-group">
                       <div class="input-group-prepend">

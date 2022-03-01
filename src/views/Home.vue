@@ -7,35 +7,9 @@
   <p>
     We are an e-commerce business selling soccer gear. Blah blah blah
   </p>
-    <form @submit.prevent="login" class="form neu-border">
-    <h2 class="form-heading">Login</h2>
-    <input
-      class="form-input neu-border-inset"
-      type="email"
-      v-model="email"
-      placeholder="Email"
-    />
-    <input
-      class="form-input neu-border-inset"
-      type="password"
-      v-model="password"
-      placeholder="Password"
-    />
-    <button type="submit" class="form-btn neu-border">Sign in</button>
-    <div class="form-social-login">
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-google"></i>
-      </button>
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-facebook-f"></i>
-      </button>
-    </div>
 
-    <p>
-      Not a member?
-      <router-link :to="{ name: 'Register' }">Create an account</router-link>
-    </p>
-  </form>
+<button type="button" class="btn btn-primary btn-lg"><router-link :to="{ name: 'Login' }">Log in</router-link></button>
+<button type="button" class="btn btn-secondary btn-lg"><router-link :to="{ name: 'Register' }">Sign up</router-link></button>
 </section>
 </template>
 
@@ -99,7 +73,12 @@ li {
 }
 a {
   color: blue;
+  text-decoration: none;
 }
+button {
+  margin: 10px;
+}
+
 
 
 </style>
