@@ -39,6 +39,7 @@ export default {
   width: 100%;
   background: #f5f5f5;
   box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff;
+  z-index: 1000;
 }
 
 #nav-btn {

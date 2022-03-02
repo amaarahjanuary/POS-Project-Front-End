@@ -39,21 +39,32 @@
         </select>
       </div>
     </div>
-          
-          <div class="card">
-            <div v-for="product in products" :key="product.id">
+          <div class="row">
+          <div class="card col-sm-3" v-for="product in products" :key="product.id">
+            <div v-if="products" >
         <img :src="product.img" class="card-img-top" alt="${product.title}">
         <div class="card-body">
           <h5 class="card-title">{{ product.title }}</h5>
           <h5 class="card-category">{{ product.category }}</h5>
-          <p class="card-text">{{ product.price }}</p>
+          <p class="card-text">R{{ product.price }}</p>
         </div>
           <div class="d-flex mb-3">
             <input type="number" class="form-control" value=1 min=1 id="addToCart${position}">
             <button type="button" class="btn btn-secondary ms-3" onclick="addToCart(${position})"><i class="bi bi-bag-plus"></i></button>
           </div>
         </div>
+                  <div class="d-flex justify-content-end card-footer">
+            <button type="button" class="btn btn-primary w-50 ms-4" data-bs-toggle="modal" data-bs-target="#editProduct${position}" >
+              Edit
+            </button>
+            <button type="button" class="btn btn-danger w-50 ms-4" onclick="deleteProduct(${position})" >
+              Delete
+            </button>
           </div>
+          </div>
+          
+                    </div>
+
 
 </template>
 <script>
@@ -115,25 +126,25 @@ export default {
   flex-direction: column;
 } */
 
-img {
-  max-width: 200px;
-  max-height: 200px;
-  object-fit: cover;
-}
+
 
 #products {
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   gap: 20px;
 }
 
-/* img {
-  height: 200px !important;
+img {
+    height: 200px !important;
   object-fit: cover;
-} */
+  max-width: 200px 
+}
 
 .card {
   width: calc((100% / 4) - 15px);
-  min-width: 300px;
+  min-width: 250px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  align-items: center;
 }
 
 .card-title {

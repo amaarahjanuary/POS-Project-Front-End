@@ -37,8 +37,10 @@ body {
 /* Other Classes for Page Styling */
 
 body {
-  background: #007bff;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
+  /* background: #007bff;
+  background: linear-gradient(to right, #0062E6, #33AEFF); */
+    background: #f5f5f5;
+  box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff;
 }
 
 </style>

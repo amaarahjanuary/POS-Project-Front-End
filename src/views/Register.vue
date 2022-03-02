@@ -70,7 +70,8 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          alert("User registered");
+          this.msg = `${ this.name } registered Successfully`;
+          alert("redirecting to Login...");
           localStorage.setItem("jwt", json.jwt);
           this.$router.push({ name: "Login" });
         })
