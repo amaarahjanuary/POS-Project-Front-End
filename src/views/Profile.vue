@@ -2,7 +2,7 @@
 
 
 
-<div class="boxxie"  v-for="user of users" :key="user._id" >
+<div class="box"  v-for="user of users" :key="user._id" >
   
 <h1>{{user.name}}</h1>
 <img :src="user.avatar" class="pp" alt="profile-pic">
@@ -11,7 +11,8 @@
 <p>{{user.email}}</p>
 <h3>CONTACT</h3>
 <p>{{user.contact}}</p>
-<div class="divvie d-flex" >
+
+<div class="div2 d-flex" >
 <button class="btn btn-danger butt">DELETE</button>
 
 <button class="btn btn-secondary butt">EDIT</button>
@@ -82,11 +83,11 @@ mounted() {
 </script>
 
 <style scoped>
-.boxxie{
+.box{
   margin: 10px;
   border: 2px solid white;
 }
-.divvie{
+.div2{
   text-align: center;
   margin-left: 43%;
 }
@@ -153,7 +154,7 @@ color: red;
     padding-top: 15%;
     padding-bottom:15%;
 }
-.divvie{
+.div2{
   text-align: center;
   margin-left: 23%;
 }
