@@ -63,7 +63,7 @@ export default {
 	 text-decoration: none;
 }
  #nav a.router-link-exact-active:not(.logout) {
-	 color: blue;
+	 color: rgb(0, 195, 255);
 }
 
 @media screen and (max-width: 500px) {

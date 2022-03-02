@@ -26,7 +26,7 @@ export default {
         alert("User not logged in");
         return this.$router.push({ name: "Login" });
       }
-      fetch("https://generic-blog-api.herokuapp.com/posts", {
+      fetch("https://pos-backend-proj.herokuapp.com/products", {
         method: "POST",
         body: JSON.stringify({
           title: this.title,

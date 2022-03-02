@@ -72,7 +72,7 @@ li {
   margin: 0 10px;
 }
 a {
-  color: blue;
+  color: rgb(0, 195, 255);
   text-decoration: none;
 }
 button {
