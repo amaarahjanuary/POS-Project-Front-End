@@ -6,7 +6,6 @@
   
 <h1>{{user.name}}</h1>
 <img :src="user.avatar" class="pp" alt="profile-pic">
-<!-- <img src="@/assets/person.png" class="profile-pic" alt="pp"> -->
         <h3>EMAIL</h3>
 <p>{{user.email}}</p>
 <h3>CONTACT</h3>

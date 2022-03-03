@@ -2,14 +2,14 @@
 
 <section>
   <div class="hello">
-    <h1>Kicking n Screaming</h1>
+    <h1 class="display-1">Kicking n Screaming</h1>
   </div>
   <p>
-    We are an e-commerce business selling soccer gear. Blah blah blah
+    We are an e-commerce business selling a variety of soccer-related products
   </p>
 
-<button type="button" class="btn btn-primary btn-lg"><router-link :to="{ name: 'Login' }">Log in</router-link></button>
-<button type="button" class="btn btn-secondary btn-lg"><router-link :to="{ name: 'Register' }">Sign up</router-link></button>
+<router-link :to="{ name: 'Login' }"><button type="button" class="btn btn-primary btn-lg">Log in</button></router-link>
+<router-link :to="{ name: 'Register' }"><button type="button" class="btn btn-secondary btn-lg">Sign up</button></router-link>
 </section>
 </template>
 
@@ -47,17 +47,25 @@ export default {
 
 section{
     height: 100vh;
-    background-image: url('https://picsum.photos/1920/1080');
+    background-image: url('https://i.postimg.cc/SR0xJncx/pexels-jonathan-petersson-399187.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+main {
+  padding: 0 !important;
 }
 
 .hello{
-  padding-top: 200px
+  padding-top: 200px;
+  margin-top: auto;
+  margin-bottom: auto;
 
 }
 
 h1{
-  color: blue;
-  font-size: 100px;
+  color: rgb(0, 195, 255);
+  /* font-size: 100px; */
 }
 
 h3 {
@@ -79,6 +87,9 @@ button {
   margin: 10px;
 }
 
-
+p {
+  font-size: 40px;
+  color: white;
+}
 
 </style>

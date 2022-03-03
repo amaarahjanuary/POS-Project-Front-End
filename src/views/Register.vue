@@ -28,14 +28,7 @@
       placeholder="Password"
     />
     <span style="color:black"><button type="submit" class="form-btn neu-border">Sign up</button></span>
-    <!-- <div class="form-social-login">
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-google"></i>
-      </button>
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-facebook-f"></i>
-      </button>
-    </div> -->
+
 
     <p>
       Already have an account?

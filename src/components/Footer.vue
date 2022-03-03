@@ -10,7 +10,7 @@
       </div>
     </div>
   </div> -->
-  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50">
+  <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-light text-white-50">
     <div class="container text-center">
       <small>Copyright &copy; KickingnScreaming</small>
     </div>
@@ -25,10 +25,7 @@ export default {
 </script>
 
 <style>
-html,
-body {
-  height: 100%;
-}
+
 
 #page-content {
   flex: 1 0 auto;
@@ -39,8 +36,18 @@ body {
 body {
   /* background: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF); */
-    background: #f5f5f5;
+    background: black;
   box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff;
 }
 
+.container {
+  color: aqua;
+}
+footer {
+  z-index: 1000;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
 </style>

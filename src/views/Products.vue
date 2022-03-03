@@ -39,6 +39,7 @@
         </select>
       </div>
     </div>
+    
           <div class="row">
           <div class="card col-sm-3" v-for="product in products" :key="product.id">
             <div v-if="products" >
@@ -114,22 +115,11 @@ export default {
 };
 </script>
 <style>
-/* .products-container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
-  margin-inline: auto;
-  padding: 30px;
-  gap: 2%;
-  justify-content: stretch;
-  align-items: stretch;
-  flex-direction: column;
-} */
+
 
 
 
 #products {
-  /* flex-wrap: wrap; */
   gap: 20px;
 }
 
@@ -145,9 +135,14 @@ img {
   margin-left: 10px;
   margin-bottom: 10px;
   align-items: center;
+  padding-bottom: 50px;
 }
 
 .card-title {
   text-transform: capitalize;
+}
+
+.form-label {
+  color: rgb(182, 22, 22);
 }
 </style>

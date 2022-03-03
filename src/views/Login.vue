@@ -15,14 +15,6 @@
       placeholder="Password"
     />
     <button type="submit" class="form-btn neu-border">Sign in</button>
-    <!-- <div class="form-social-login">
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-google"></i>
-      </button>
-      <button class="form-btn neu-border form-social-btn">
-        <i class="fab fa-facebook-f"></i>
-      </button>
-    </div> -->
 
     <p>
       Not a member?
@@ -72,13 +64,11 @@ body {
 }
 .neu-border {
   border-radius: 30px;
-  /* background: transparent !important; */
-  /* box-shadow: 8px 8px 15px #e4e4e4, -8px -8px 15px #ffffff; */
+
 }
 .neu-border-inset {
   border-radius: 30px;
-  /* background: transparent !important; */
-  /* box-shadow: inset 8px 8px 15px #e4e4e4, inset -8px -8px 15px #ffffff; */
+
 }
 
 .form {
@@ -92,7 +82,6 @@ body {
   max-width: 600px;
   margin-top: 200px;
   background-color: rgb(0, 195, 255);
-  /* background: transparent !important; */
 }
 
 .form-heading {
